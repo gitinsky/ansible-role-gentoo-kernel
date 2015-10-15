@@ -1,0 +1,12 @@
+---
+- name: emerge genkernel
+  portage: sync=yes package=genkernel
+
+- name: create /etc/kernels
+  file: state=directory dest=/etc/kernels
+
+- name: put kernel-config-x86_64-4.0.5-gentoo
+  file: dest=/etc/kernel/kernel-config-x86_64-4.0.5-gentoo state=absent
+
+- name: put kernel-config-x86_64-4.0.5-gentoo
+  copy: src=kernel-config-x86_64-4.0.5-gentoo dest=/etc/kernels/kernel-config-x86_64-4.0.5-gentoo
